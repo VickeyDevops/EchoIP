@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = 'us-east-1'  // Change if needed
         ECR_REPO = 'ip-tracker'  // Change if needed
-        IMAGE_TAG = 'latest'  
+        IMAGE_TAG = 'latest'
     }
 
     stages {
@@ -24,7 +24,7 @@ pipeline {
         stage('Push to AWS ECR') {
             steps {
                 echo 'Pushing to AWS ECR...'
-                withCredentials([aws(credentialsId: 'aws', region: "$AWS_REGION")]) {
+                withCredentials([aws(credentialsId: 'Aws', region: "$AWS_REGION")]) {
                     sh '''
                     REPO_URI=$(aws ecr describe-repositories --repository-names $ECR_REPO --query "repositories[0].repositoryUri" --output text)
 
