@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echoip-deployment
+  labels:
+    app: echoip
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echoip
+  template:
+    metadata:
+      labels:
+        app: echoip
+    spec:
+      containers:
+      - name: echoip
+        image: 319337733168.dkr.ecr.us-east-1.amazonaws.com/ip-tracker:latest
+        ports:
+        - containerPort: 5000
